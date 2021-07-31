@@ -1,61 +1,29 @@
 package ru.lomov.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.profiling.GL20Interceptor;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.Game;
 
-public class IndependenceUnderFire extends ApplicationAdapter {
-    SpriteBatch batch;
-    Texture img;
-    Texture fon;
-    private int x = 0;
-    private int y = 0;
-    private int w = 256;
-    private int h = 256;
-    private int fw = 600;
-    private int fh = 600;
+import ru.lomov.game.screen.MenuScreen;
 
-    private TextureRegion region;
+public class IndependenceUnderFire extends Game {
+
 
     @Override
     public void create() {
-        batch = new SpriteBatch();
-        fon = new Texture("cosmos.jpg");
-        img = new Texture("ufo .png");
-        //region = new TextureRegion(img, 125, 125, 50, 50);
-    }
-
-    @Override
-    public void render() {
-        y++;
-        x++;
-        if (h <= 256) {
-            w--;
-            h--;
-
-        }
-        if (h <= 0) {
-            w = 2;
-            h = 2;
-        }
-        batch.enableBlending();
-        ScreenUtils.clear(1, 0, 0, 1);
-        //batch.setColor(0f,0f,0f,0.3f);
-        batch.begin();
-        batch.draw(fon, 0, 0,fw,fh);
-        batch.draw(img, x, y, w, h);
-        //batch.draw(region, 125,125);
-        batch.end();
-    }
-
-    @Override
-    public void dispose() {
-        batch.dispose();
-        img.dispose();
+        setScreen(new MenuScreen());
     }
 }
+//        Vector2 v1 = new Vector2(3, 3);
+//        Vector2 v2 = new Vector2();
+//        v2.set(2,1);
+//        v1.add(v2);//сложение векторов
+//        v1.set(7,7);
+//        v2.set(2,1);
+//        v1.sub(v2);//вычитание векторов для определения расстояния до точки
+//        v1.scl(0.9f);//скалирование вектора
+//        v1.nor();//нормализация вектора, приведение его к еденице
+//        v2.cpy().add(v1);//работа с копеей вектора. Метод нельзя вызывать из многократных методов(render)
+//        v1.set(1,1);
+//        v2.set(-1, 1);
+//        v1.nor();
+//        v2.nor();
+//        Math.acos(v1.dot(v2));// радиант(скалярное произведение векторов)
